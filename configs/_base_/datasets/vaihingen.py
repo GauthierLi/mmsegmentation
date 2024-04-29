@@ -1,6 +1,6 @@
 # dataset settings
 dataset_type = 'ISPRSDataset'
-data_root = '/home/gauthierli/code/temp/0402_7000/data/Vaihingen/clean'
+data_root = '/home/gauthierli/code/temp/0402_7000/0402_clean_data/Vaihingen/clean'
 crop_size = (512, 512)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
