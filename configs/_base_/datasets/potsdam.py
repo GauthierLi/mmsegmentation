@@ -1,6 +1,6 @@
 # dataset settings
 dataset_type = 'PotsdamDataset'
-data_root = '/home/gauthierli/code/temp/0402_7000/data/Potsdam/clean'
+data_root = '/root/autodl-tmp/0402_clean_data/Postdam/clean'
 crop_size = (512, 512)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
@@ -62,5 +62,9 @@ val_dataloader = dict(
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
 
-val_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU'])
+val_evaluator = dict(iou_metrics=[
+                        'mIoU',
+                        'mDice',
+                        'mFscore',
+                    ], type='SemSegMetric')
 test_evaluator = val_evaluator

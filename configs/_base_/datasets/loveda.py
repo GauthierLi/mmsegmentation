@@ -1,6 +1,6 @@
 # dataset settings
 dataset_type = 'LoveDADataset'
-data_root = '/home/gauthierli/code/temp/0402_7000/0402_clean_data/LoveDA/clean'
+data_root = '/root/autodl-tmp/0402_clean_data/LoveDA/clean'
 crop_size = (512, 512)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
