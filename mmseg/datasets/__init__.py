@@ -41,6 +41,7 @@ from .transforms import (CLAHE, AdjustGamma, Albu, BioMedical3DPad,
                          SegRescale)
 from .voc import PascalVOCDataset
 from .satellite import SatelliteDataset
+from .loveda_san import LoveDASanDataset
 
 # yapf: enable
 __all__ = [
@@ -63,5 +64,5 @@ __all__ = [
     'LoadMultipleRSImageFromFile', 'LoadSingleRSImageFromFile',
     'ConcatCDInput', 'BaseCDDataset', 'DSDLSegDataset', 'BDD100KDataset',
     'NYUDataset', 'HSIDrive20Dataset', 
-    'SatelliteDataset'
+    'SatelliteDataset', 'LoveDASanDataset'
 ]

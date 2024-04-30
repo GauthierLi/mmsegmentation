@@ -8,6 +8,17 @@ def satellite_classes():
 def satellite_palette():
     return [[0, 0, 0], [255, 255, 255]]
 
+def loveda_san_classes():
+    """LoveDA class names for external use."""
+    return [
+        'building', 'road', 'water', 'barren', 'forest',
+        'agricultural'
+    ]
+    
+def loveda_san_palette():
+    """LoveDA palette for external use."""
+    return [[255, 0, 0], [255, 255, 0], [0, 0, 255],
+            [159, 129, 183], [0, 255, 0], [255, 195, 128]]
 
 def cityscapes_classes():
     """Cityscapes class names for external use."""
@@ -501,6 +512,7 @@ dataset_aliases = {
     'voc': ['voc', 'pascal_voc', 'voc12', 'voc12aug'],
     'pcontext': ['pcontext', 'pascal_context', 'voc2010'],
     'loveda': ['loveda'],
+    'loveda_san': ['loveda_san'],
     'potsdam': ['potsdam'],
     'vaihingen': ['vaihingen'],
     'cocostuff': [
