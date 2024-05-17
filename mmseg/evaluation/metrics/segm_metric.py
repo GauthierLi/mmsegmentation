@@ -159,6 +159,7 @@ class SemSegMetric(BaseMetric):
         """
         assert pred_label.shape == label.shape
         mask = label != ignore_index
+        bg = label == ignore_index
         label, pred_label = label[mask], pred_label[mask]
 
         intersect = pred_label[pred_label == label]
@@ -169,11 +170,14 @@ class SemSegMetric(BaseMetric):
         area_label = torch.histc(
             label.float(), bins=num_classes, min=0, max=num_classes - 1)
         area_union = area_pred_label + area_label - area_intersect
+        area_bg = torch.histc(
+            bg.float(), bins=num_classes, min=0, max=num_classes - 1)
         result = dict(
             area_intersect=area_intersect,
             area_union=area_union,
             area_pred_label=area_pred_label,
-            area_label=area_label)
+            area_label=area_label,
+            area_bg=area_bg)
         return result
 
     def get_return_metrics(self, results: list) -> dict:
@@ -207,8 +211,9 @@ class SemSegMetric(BaseMetric):
         total_area_union = sum([r['area_union'] for r in results])
         total_area_pred_label = sum([r['area_pred_label'] for r in results])
         total_area_label = sum([r['area_label'] for r in results])
+        total_area_bg = sum([r['area_bg'] for r in results])
 
-        all_acc = total_area_intersect / total_area_label
+        all_acc = (total_area_intersect + total_area_bg) / (total_area_label + total_area_bg)
         ret_metrics = OrderedDict({'aAcc': all_acc})
         for metric in self.metrics:
             if metric == 'mIoU':

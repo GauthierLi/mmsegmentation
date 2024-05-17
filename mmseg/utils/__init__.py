@@ -70,5 +70,7 @@ __all__ = [
     'bdd100k_classes',
     'bdd100k_palette',
     'satellite_classes', 
-    'satellite_palette'
+    'satellite_palette',
+    'loveda_san_classes', 
+    'loveda_san_palette'
 ]
